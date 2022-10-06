@@ -20,6 +20,13 @@ class Pessoa(db.Model):
     def __str__(self):
         return f'{self.nome}, email ={self.email} , Função: {self.tipo}'
 
+    def json(self):
+        return {
+            "id": self.id,
+            "nome": self.nome,
+            "email": self.email,
+            "tipo": self.tipo,
+        }
 
 
 class Professor(Pessoa):
@@ -32,8 +39,11 @@ class Professor(Pessoa):
 
     def __str__(self):
         return super().__str__() + f", salario= {self.salario}"
-           
 
+    def json(self):
+        json1 = super().json()
+        json1.update({"salario":self.salario})
+        return json1
 
 class Personal(Pessoa):
     id = db.Column(db.Integer, db.ForeignKey('pessoa.id'),primary_key =True)
@@ -89,7 +99,7 @@ class Exercicio(db.Model):
 
 
 
-
+"""
 
 #teste
 
@@ -135,8 +145,8 @@ for p in db.session.query(Pessoa).all():
 
 print()
 
-"""for a in zenke.personais:
-    print(f'Busca dos Alunos do Personal {zenke.nome}:\n\t{a}')"""
+    for a in zenke.personais:
+        print(f'Busca dos Alunos do Personal {zenke.nome}:\n\t{a}')
 
 
 
@@ -155,3 +165,4 @@ print ('Retornando Todas os Exercicios de um Treino:')
 for t in t1.exercicios:
     print(f'\t{t}')
 
+"""
