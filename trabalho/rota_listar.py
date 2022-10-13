@@ -3,16 +3,17 @@ from modelo import *
 
 @app.route("/listar/<string:classe>")
 def listar(classe):
-    # obter os dados da classe informada
     if classe == "Pessoa":
         dados = db.session.query(Pessoa).all()
-    # converter dados para json
+    elif classe =="Treino":
+        dados = db.session.query(Treino).all()
+    elif classe =="Exercicio":
+        dados = db.session.query(Exercicio).all()
     lista_jsons = [ x.json() for x in dados ]
-    # converter a lista do python para json
     resposta = jsonify(lista_jsons)
-    # PERMITIR resposta para outras pedidos oriundos de outras tecnologias
     resposta.headers.add("Access-Control-Allow-Origin" ,server)
     return resposta
+    
 
     '''
     exemplo de teste:
