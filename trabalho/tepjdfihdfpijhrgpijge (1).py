@@ -30,14 +30,6 @@ class Personal(Pessoa):
 class Aluno(Pessoa):
     id = db.Column(db.Integer, db.ForeignKey("pessoa.id"), primary_key = True)
     b = db.Column(db.String(50))
-
-
-    
-
-    #personal_id = db.Column(db.Integer, db.ForeignKey(Personal.id))
-    #ersonal = db.relationship("Personal", back_populates="alunos")
-
-
     __mapper_args__= {
         'polymorphic_identity': 'aluno',
     }
@@ -54,5 +46,7 @@ a1 = Aluno(nome = "dsfoufgsghf", b = "asdddddddd", personal = [per])
 db.session.add(a)
 db.session.add(a1)
 db.session.add(per)
+
+
 
 db.session.commit()
