@@ -91,8 +91,10 @@ class Aluno(Pessoa):
 
     def json(self):
         j1 = super().json()
-        j1.update({'Plano':self.plano},{'Ativo':self.ativo},{'Valor da mensalidade':self.valor_mensalidade})
+        j1.update({'Plano':self.plano, 'Ativo':self.ativo,'Valor da mensalidade':self.valor_mensalidade})
         return j1
+
+
 
 
 
@@ -106,8 +108,8 @@ class Treino(db.Model):
         return f', series:{self.series}, Tipo de Treino:{self.tipo}'
 
     def json(self):
-        j1 = super().json()
-        j1.update({'Serie': self.series},{'Tipo': self.tipo})
+        
+        j1 = {'Serie': self.series,'Tipo': self.tipo}
         return j1
 
 
@@ -127,8 +129,8 @@ class Exercicio(db.Model):
             "id": self.id,
             "nome": self.nome,
             "maquina": self.maquina,
-            "exer_id": self.exer_id,
-            'exercicio':self.treno
+            "id exercicio":self.exer_id
+
         }
 
 
@@ -147,7 +149,7 @@ treinoaluno = db.Table('treinoaluno', db.metadata,
                                  db.ForeignKey(Treino.id))
                        )
 
-
+"""
 if os.path.exists(arquivobd):
     os.remove(arquivobd)
 
@@ -239,4 +241,6 @@ print()
 print('Retornando Todos os Função,Nomes e ID das Pessoas')
 for pessoas in db.session.query(Pessoa).all():
     print(f'\t {pessoas.funcao} = {pessoas.nome}: {pessoas.id}')
+
+    """
 

@@ -13,7 +13,11 @@ def incluir(classe):
         nova = Professor(**dados) # criar a nova pessoa
       elif classe == "Personal":
         nova = Personal(**dados) # criar a nova pessoa   
-      
+      elif classe == "Treino":
+        nova = Treino (**dados)
+      elif classe == "Exercicio":
+        nova = Exercicio(**dados)
+
       db.session.add(nova) # adicionar no BD
       db.session.commit() # efetivar a operação de gravação
     

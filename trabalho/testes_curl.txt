@@ -1,3 +1,15 @@
+
+Curls para incluir no terminal:
 curl -d '{"nome":"James Kirk","email":"jakirk@gmail.com" , "ativo":1,"valor_mensalidade":"1000","trei_id":1}' -X POST -H "Content-Type:application/json" localhost:5000/incluir/Aluno
 
-curl -d '{"nome":"James Kirk","email":"jakirk@gmail.com" , "ativo":1,"valor_mensalidade":"1000","trei_id":1}' -X POST -H "Content-Type:application/json" localhost:5000/incluir/Aluno
+curl -d '{"nome":"James Kirk","email":"jakirk@gmail.com" ,"salario":"1000"}' -X POST -H "Content-Type:application/json" localhost:5000/incluir/Professor
+
+
+curl -d '{"nome":"supino-reto","maquina":"banco-reto" ,"exer_id":3}' -X POST -H "Content-Type:application/json" localhost:5000/incluir/Exercicio
+
+curl -d '{"series":"5x12","tipo":"braço"}' -X POST -H "Content-Type:application/json" localhost:5000/incluir/Treino
+
+
+
+Curl atualizar
+curl -X PUT -d '{"id":3, "nome":"Teresa", "email":"te@gmail.com", "idade":50,"cpf":"123456789011","funcao":"professor"}' -H "Content-Type:application/json" localhost:5000/atualizar/Pessoa 
